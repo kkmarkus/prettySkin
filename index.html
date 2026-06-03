@@ -73,7 +73,54 @@
     </header>
 
     <section id="inicio">
-      <div class="carrossel-hero"></div>
+      <div class="carousel-hero">
+
+        <div class="carousel-slide active" role="group">
+          <div class="slide-content">
+            <span class="slide-tag">Propaganda 1</span>
+            <h1>Titulo da propaganda 1</h1>
+            <p>descrição da propaganda</p>
+            <a href="#" class="btn-hero">para onde leva essa propaganda?</a>
+          </div>
+          <div class="slide-image slide-image-1">
+            <!--iamgem da propaganda 1-->
+          </div>
+        </div>
+
+        <div class="carousel-slide active" role="group">
+          <div class="slide-content">
+            <span class="slide-tag">Propaganda 2</span>
+            <h1>Titulo da propaganda 2</h1>
+            <p>descrição da propaganda</p>
+            <a href="#" class="btn-hero">para onde leva essa propaganda?</a>
+          </div>
+          <div class="slide-image slide-image-2">
+            <!--iamgem da propaganda 2-->
+          </div>
+        </div>
+
+        <div class="carousel-slide active" role="group">
+          <div class="slide-content">
+            <span class="slide-tag">Propaganda 3</span>
+            <h1>Titulo da propaganda 3</h1>
+            <p>descrição da propaganda</p>
+            <a href="#" class="btn-hero">para onde leva essa propaganda?</a>
+          </div>
+          <div class="slide-image slide-image-3">
+            <!--iamgem da propaganda 3-->
+          </div>
+        </div>
+
+        <button class="carousel-btn prev" onclick="moverSlide(-1)"></button>
+        <button class="carousel-btn next" onclick="moverSlide(1)"></button>
+
+        <div class="carousel-dots" role="tablist">
+          <div class="dot active" onclick="irParaSlide(0)" role="tab" aria-selected="true"></div>
+          <div class="dot"        onclick="irParaSlide(1)" role="tab" aria-selected="false"></div>
+          <div class="dot"        onclick="irParaSlide(2)" role="tab" aria-selected="false"></div>
+        </div>        
+
+      </div>
     </section>
 
     <section id="produtos">
