@@ -25,7 +25,7 @@
 
       <div class="header-seach" role="search">
         <input type="search" placeholder="o que está buscando hoje?" id="buscaInput">
-        <button>
+        <button type="button">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8" />
@@ -36,7 +36,7 @@
 
       <div class="header-icons">
 
-        <button class="header-icon-btn">
+        <button type="button" class="header-icon-btn">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -46,7 +46,7 @@
         </button>
 
         <div class="cart-wrapper">
-          <button class="header-icon-btn" id="btnCarrinho">
+          <button type="button" class="header-icon-btn" id="btnCarrinho">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
@@ -113,8 +113,8 @@
         </div>
       </div>
 
-      <button class="carousel-btn prev"></button>
-      <button class="carousel-btn next"></button>
+      <button type="button" class="carousel-btn prev"></button>
+      <button type="button" class="carousel-btn next"></button>
 
       <div class="carousel-dots" role="tablist">
         <div class="dot active" role="tab" aria-selected="true"></div>
@@ -455,7 +455,7 @@
   <aside class="carrinho-painel" id="carrinhopainel">
     <div class="carrinho-painel-header">
       <h2>Meu Carrinho</h2>
-      <button class="carrinho-fechar" id="carrinhoFechar">✕</button>
+      <button type="button" class="carrinho-fechar" id="carrinhoFechar">✕</button>
     </div>
     <div class="carrinho-itens" id="carrinhoItens">
       <p class="carrinho-vazio">Seu carrinho está vazio.</p>
@@ -465,13 +465,13 @@
         <span>Total</span>
         <span id="carrinhoTotal">R$ 0,00</span>
       </div>
-      <button class="btn-finalizar">Finalizar compra</button>
+      <button type="button" class="btn-finalizar">Finalizar compra</button>
     </div>
   </aside>
   <div class="carrinho-overlay" id="carrinhoOverlay"></div>
 
   <!-- Chatbot -->
-  <button class="chat-toggle" id="chat-toggle">💬</button>
+  <button type="button" class="chat-toggle" id="chat-toggle">💬</button>
 
   <div class="chat-widget hidden" id="chat">
 
@@ -488,7 +488,7 @@
 
     <div class="chat-input">
       <input type="text" id="chatInput" placeholder="Digite sua mensagem..." />
-      <button>➤</button>
+      <button type="button">➤</button>
     </div>
 
   </div>

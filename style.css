@@ -34,7 +34,7 @@
   /* Layout */
 
   --container:  1200px;
-  --header-h:   108px;  
+  --header-h:   120px;  
   
   /* Transição padrão */
   --t: .3s ease;
@@ -1093,8 +1093,7 @@ footer {
   position: fixed;
   bottom: 1.75rem;
   right: 1.75rem;
-  z-index: 2000;
-  width: 56px;
+  z-index: 1050;
   height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--pink-forte), var(--dourado));
@@ -1117,7 +1116,7 @@ footer {
   position: fixed;
   bottom: 5.5rem;
   right: 1.75rem;
-  z-index: 1999;
+  z-index: 1049;
   width: 340px;
   background: var(--branco);
   border-radius: var(--raio-lg);
@@ -1275,7 +1274,7 @@ footer {
 /* Mobile */
 @media (max-width: 640px) {
   :root {
-    --header-h: 110px;
+    --header-h: 162px; /* mobile: header-main (~114px com busca em 2ª linha) + nav (48px) */
   }
 
   .header-main {
@@ -1450,7 +1449,8 @@ footer {
 .carrinho-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: .75rem;
   background: var(--branco);
   border-radius: var(--raio-md);
   padding: .85rem 1rem;
@@ -1464,10 +1464,41 @@ footer {
   color: var(--preto);
 }
 
+/* Controles de quantidade (− n +) */
+.carrinho-item-controles {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-shrink: 0;
+}
+
+.btn-qtd {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bg-suave);
+  border: 1.5px solid var(--border);
+  color: var(--preto);
+  font-size: 1rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: background var(--t), border-color var(--t);
+  cursor: pointer;
+}
+
+.btn-qtd:hover {
+  background: var(--pink-forte);
+  border-color: var(--pink-forte);
+  color: var(--branco);
+}
+
 .carrinho-item-qtd {
-  font-size: .78rem;
-  color: var(--texto-muted);
-  font-weight: 300;
+  min-width: 20px;
+  text-align: center;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--preto);
 }
 
 /* Rodapé: total + botão */
@@ -1548,7 +1579,6 @@ footer {
 
 /* Feedback do formulário */
 .form-feedback {
-  margin-top: 1rem;
   padding: .75rem 1.2rem;
   border-radius: var(--raio-sm);
   font-size: .875rem;
