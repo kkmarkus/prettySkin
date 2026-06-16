@@ -72,6 +72,12 @@ const CAROUSEL = (() => {
       if (Math.abs(diff) > 50) moverSlide(diff > 0 ? 1 : -1);
       else reiniciarTimer();
     });
+
+    // Pausa o timer quando a aba sai de foco (evita trabalho em background)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearInterval(timer);
+      else reiniciarTimer();
+    });
   }
 
   return { init, irParaSlide, moverSlide };
@@ -87,20 +93,32 @@ const HEADER = (() => {
   let   lastScroll = 0;
 
   // Esconde/mostra a barra de nav ao rolar
+  let scrollTicking = false;
+
   function onScroll() {
-    const currentScroll = window.scrollY;
-    const scrollingDown = currentScroll > lastScroll;
+    if (scrollTicking) return;
+    scrollTicking = true;
 
-    if (nav) {
-      if (scrollingDown && currentScroll > 80) {
-        nav.classList.add('nav-hidden');
-      } else if (!scrollingDown) {
-        nav.classList.remove('nav-hidden');
+    requestAnimationFrame(() => {
+      const currentScroll = window.scrollY;
+      const delta         = currentScroll - lastScroll;
+      const LIMIAR         = 6;
+
+      if (nav && Math.abs(delta) > LIMIAR) {
+        const scrollingDown = delta > 0;
+
+        if (scrollingDown && currentScroll > 80) {
+          nav.classList.add('nav-hidden');
+        } else if (!scrollingDown) {
+          nav.classList.remove('nav-hidden');
+        }
+
+        lastScroll = currentScroll <= 0 ? 0 : currentScroll;
       }
-    }
 
-    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
-    atualizarLinkAtivo();
+      atualizarLinkAtivo();
+      scrollTicking = false;
+    });
   }
 
   // Marca o link cujo destino está na viewport
@@ -192,8 +210,12 @@ const CARRINHO = (() => {
     nomes.forEach(nome => {
       const div = document.createElement('div');
       div.className = 'carrinho-item';
+      const precoFormatado = itens[nome].preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
       div.innerHTML = `
-        <span class="carrinho-item-nome">${nome}</span>
+        <div class="carrinho-item-info">
+          <span class="carrinho-item-nome">${nome}</span>
+          <span class="carrinho-item-preco">${precoFormatado}</span>
+        </div>
         <div class="carrinho-item-controles">
           <button type="button" class="btn-qtd btn-qtd-menos" data-nome="${nome}" aria-label="Diminuir quantidade">−</button>
           <span class="carrinho-item-qtd">${itens[nome].qtd}</span>
@@ -520,8 +542,9 @@ const CHATBOT = (() => {
   function toggleChat() {
     const aberto = !widget.classList.contains('hidden');
     widget.classList.toggle('hidden', aberto);
-    btnToggle.textContent = aberto ? '💬' : '✕';
+    btnToggle.classList.toggle('aberto', !aberto);
     btnToggle.setAttribute('aria-expanded', String(!aberto));
+    btnToggle.setAttribute('aria-label', aberto ? 'Abrir chat' : 'Fechar chat');
 
     if (!aberto) inputChat?.focus();
   }
