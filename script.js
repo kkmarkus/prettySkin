@@ -30,7 +30,7 @@ const CAROUSEL = (() => {
 
   function reiniciarTimer() {
     clearInterval(timer);
-    timer = setInterval(() => moverSlide(1), INTERVALO);
+    timer = setInterval(() => irParaSlide(indiceAtual + 1), INTERVALO);
   }
 
   function init() {
@@ -50,7 +50,6 @@ const CAROUSEL = (() => {
     btnPrev?.addEventListener('click', () => { moverSlide(-1); });
     btnNext?.addEventListener('click', () => { moverSlide(1);  });
 
-    // Dots via addEventListener
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => { irParaSlide(i); reiniciarTimer(); });
     });
@@ -71,9 +70,9 @@ const CAROUSEL = (() => {
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) moverSlide(diff > 0 ? 1 : -1);
       else reiniciarTimer();
-    });
+    }, { passive: true });
 
-    // Pausa o timer quando a aba sai de foco (evita trabalho em background)
+    // Pausa o timer quando a aba sai de foco
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) clearInterval(timer);
       else reiniciarTimer();
@@ -210,11 +209,12 @@ const CARRINHO = (() => {
     nomes.forEach(nome => {
       const div = document.createElement('div');
       div.className = 'carrinho-item';
-      const precoFormatado = itens[nome].preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+         const subtotal = (itens[nome].preco * itens[nome].qtd)
+        .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
       div.innerHTML = `
         <div class="carrinho-item-info">
           <span class="carrinho-item-nome">${nome}</span>
-          <span class="carrinho-item-preco">${precoFormatado}</span>
+          <span class="carrinho-item-preco">${subtotal}</span>
         </div>
         <div class="carrinho-item-controles">
           <button type="button" class="btn-qtd btn-qtd-menos" data-nome="${nome}" aria-label="Diminuir quantidade">−</button>
@@ -237,7 +237,6 @@ const CARRINHO = (() => {
           if (itens[nome].qtd <= 0) delete itens[nome];
         }
         atualizarBadge();
-        atualizarTotal();
         renderizarItens();
       });
     });
@@ -305,14 +304,33 @@ const BUSCA = (() => {
 
   function filtrar(termo) {
     const t = termo.trim().toLowerCase();
+    let encontrouAlgum = false;
+
     cards().forEach(card => {
-      const nome      = card.querySelector('h3')?.textContent.toLowerCase()      || '';
+      const nome      = card.querySelector('h3')?.textContent.toLowerCase()           || '';
       const categoria = card.querySelector('.card-categoria')?.textContent.toLowerCase() || '';
       const descricao = card.querySelector('.card-descricao')?.textContent.toLowerCase() || '';
       const encontrou = !t || nome.includes(t) || categoria.includes(t) || descricao.includes(t);
       card.style.opacity   = encontrou ? '1' : '0.25';
       card.style.transform = encontrou ? '' : 'scale(0.97)';
+      if (encontrou) encontrouAlgum = true;
     });
+
+    // Estado vazio: exibe aviso quando a busca não retorna nenhum produto visível.
+    let aviso = document.getElementById('busca-vazia');
+    if (!encontrouAlgum && t) {
+      if (!aviso) {
+        aviso = document.createElement('p');
+        aviso.id = 'busca-vazia';
+        aviso.style.cssText =
+          'text-align:center;color:var(--texto-muted);padding:2rem 1rem;' +
+          'grid-column:1/-1;font-size:.9rem;font-weight:300;';
+        document.querySelector('.produtos-grid')?.appendChild(aviso);
+      }
+      aviso.textContent = `Nenhum produto encontrado para "${termo}".`;
+    } else {
+      aviso?.remove();
+    }
   }
 
   function init() {
@@ -320,7 +338,7 @@ const BUSCA = (() => {
 
     input.addEventListener('input', e => filtrar(e.target.value));
 
-    const btnBusca = input.closest('.header-seach')?.querySelector('button');
+    const btnBusca = input.closest('.cabecalho-busca')?.querySelector('button');
     btnBusca?.addEventListener('click', () => {
       if (input.value.trim()) {
         document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' });
@@ -341,7 +359,12 @@ const BUSCA = (() => {
 // Formulário de Contato
 
 const FORMULARIO = (() => {
-  function enviarFormulario(event) {
+  function marcarInvalido(campo) {
+    campo.classList.add('campo-invalido');
+    campo.addEventListener('input', () => campo.classList.remove('campo-invalido'), { once: true });
+  }
+
+  async function enviarFormulario(event) {
     event.preventDefault();
 
     const form    = event.target;
@@ -354,27 +377,31 @@ const FORMULARIO = (() => {
 
     // Validação completa de todos os campos obrigatórios
     if (!nome) {
+      marcarInvalido(form.nome);
       mostrarFeedback(form, 'Por favor, informe seu nome.', 'erro');
       form.nome.focus();
       return;
     }
     if (!email) {
+      marcarInvalido(form.email);
       mostrarFeedback(form, 'Por favor, informe seu e-mail.', 'erro');
       form.email.focus();
       return;
     }
-    // Validação básica de formato de e-mail
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      marcarInvalido(form.email);
       mostrarFeedback(form, 'Por favor, informe um e-mail válido.', 'erro');
       form.email.focus();
       return;
     }
     if (!assunto) {
+      marcarInvalido(form.assunto);
       mostrarFeedback(form, 'Por favor, selecione um assunto.', 'erro');
       form.assunto.focus();
       return;
     }
     if (!mensagem) {
+      marcarInvalido(form.mensagem);
       mostrarFeedback(form, 'Por favor, escreva sua mensagem.', 'erro');
       form.mensagem.focus();
       return;
@@ -383,27 +410,43 @@ const FORMULARIO = (() => {
     btn.textContent = 'Enviando…';
     btn.disabled    = true;
 
-    setTimeout(() => {
-      const sucesso = true;
+    try {
+      /*
+       * TODO — INTEGRAÇÃO COM API
+       * Substitua o bloco abaixo pela chamada ao endpoint desejado.
+       * Exemplo de estrutura genérica:
+       *
+       *   const resposta = await fetch('/api/contato', {
+       *     method: 'POST',
+       *     headers: { 'Content-Type': 'application/json' },
+       *     body: JSON.stringify({ nome, email, assunto, mensagem })
+       *   });
+       *
+       *   if (!resposta.ok) throw new Error('Falha no servidor');
+       *
+       * Remova a linha abaixo ao integrar a API real:
+       */
+      await new Promise(resolve => setTimeout(resolve, 1400));
 
-      if (sucesso) {
-        mostrarFeedback(
-          form,
-          `Obrigado, ${nome}! Recebemos sua mensagem e responderemos em breve para ${email}.`,
-          'sucesso'
-        );
-        form.reset();
-      } else {
-        mostrarFeedback(
-          form,
-          'Ops! Ocorreu um erro ao enviar sua mensagem. Tente novamente ou ligue para (86) 99999-0000.',
-          'erro'
-        );
-      }
+      mostrarFeedback(
+        form,
+        `Obrigado, ${nome}! Recebemos sua mensagem e responderemos em breve para ${email}.`,
+        'sucesso'
+      );
+      form.reset();
 
+    } catch (err) {
+      mostrarFeedback(
+        form,
+        'Ops! Ocorreu um erro ao enviar sua mensagem. Tente novamente ou ligue para (86) 4002-8922.',
+        'erro'
+      );
+    } finally {
+      // finally garante que o botão sempre volta ao estado normal,
+      // seja em caso de sucesso ou erro da API.
       btn.textContent = 'Enviar mensagem';
       btn.disabled    = false;
-    }, 1400);
+    }
   }
 
   function mostrarFeedback(form, texto, tipo) {
@@ -465,7 +508,7 @@ const CHATBOT = (() => {
     },
     {
       gatilhos: ['contato', 'telefone', 'email', 'whatsapp', 'atendimento', 'falar', 'humano'],
-      resposta: 'Você pode nos contatar pelo formulário na seção Contato, ou pelo telefone (86) 99999-0000, de segunda a sexta das 8h às 18h. Adoramos ouvir você! 💌'
+      resposta: 'Você pode nos contatar pelo formulário na seção Contato, ou pelo telefone (86) 4002-8922, de segunda a sexta das 8h às 18h. Adoramos ouvir você! 💌'
     },
     {
       gatilhos: ['sobre', 'empresa', 'marca', 'historia', 'história', 'fundação', 'fundacao'],
@@ -482,14 +525,22 @@ const CHATBOT = (() => {
   ];
 
   /**
-   * TODO: Quando a API estiver pronta, substitua esta função por uma
-   * chamada assíncrona ao endpoint, por exemplo:
+   * TODO — INTEGRAÇÃO COM IA
+   * Quando a API estiver disponível, substitua esta função por uma
+   * chamada assíncrona ao endpoint escolhido. Exemplo de estrutura:
    *
    *   async function obterResposta(texto) {
-   *     const res = await fetch('https://api.openai.com/v1/chat/completions', { ... });
-   *     const data = await res.json();
-   *     return data.choices[0].message.content;
+   *     const resposta = await fetch('/api/chat', {
+   *       method: 'POST',
+   *       headers: { 'Content-Type': 'application/json' },
+   *       body: JSON.stringify({ mensagem: texto })
+   *     });
+   *     const dados = await resposta.json();
+   *     return dados.resposta;
    *   }
+   *
+   * O endpoint '/api/chat' deve ser implementado no servidor
+   * e pode utilizar qualquer provedor de IA desejado.
    */
   function obterResposta(texto) {
     const t = texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -500,7 +551,7 @@ const CHATBOT = (() => {
       }
     }
 
-    return 'Hmm, não tenho certeza sobre isso ainda! 😊 Mas você pode falar com nossa equipe pelo formulário de Contato ou pelo telefone (86) 99999-0000. Ficamos felizes em ajudar!';
+    return 'Hmm, não tenho certeza sobre isso ainda! 😊 Mas você pode falar com nossa equipe pelo formulário de Contato ou pelo telefone (86) 40028-922. Ficamos felizes em ajudar!';
   }
 
   function adicionarMensagem(texto, tipo) {
@@ -578,8 +629,7 @@ const CHATBOT = (() => {
 const ANIMACOES = (() => {
   const ELEMENTOS = [
     '.card-produto',
-    '.secao-titulo',
-    '.section-header',
+    '.secao-cabecalho',
     '.sobre-texto',
     '.sobre-imagem',
     '.contato-info',
