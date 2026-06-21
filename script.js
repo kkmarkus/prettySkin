@@ -542,17 +542,18 @@ const CHATBOT = (() => {
    * O endpoint '/api/chat' deve ser implementado no servidor
    * e pode utilizar qualquer provedor de IA desejado.
    */
-  function obterResposta(texto) {
-    const t = texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  async function obterResposta(texto) {
+  const res = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ mensagem: texto }),
+  });
 
-    for (const item of BASE) {
-      if (item.gatilhos.some(g => t.includes(g))) {
-        return item.resposta;
-      }
-    }
+  if (!res.ok) throw new Error('Erro na resposta do servidor');
 
-    return 'Hmm, não tenho certeza sobre isso ainda! 😊 Mas você pode falar com nossa equipe pelo formulário de Contato ou pelo telefone (86) 40028-922. Ficamos felizes em ajudar!';
-  }
+  const data = await res.json();
+  return data.resposta || 'Não consegui entender. Tente novamente!';
+}
 
   function adicionarMensagem(texto, tipo) {
     const div = document.createElement('div');
@@ -577,18 +578,24 @@ const CHATBOT = (() => {
   }
 
   function enviarMensagem() {
-    const texto = inputChat?.value.trim();
-    if (!texto) return;
+  const texto = inputChat?.value.trim();
+  if (!texto) return;
 
-    adicionarMensagem(texto, 'user');
-    inputChat.value = '';
+  adicionarMensagem(texto, 'user');
+  inputChat.value = '';
 
-    const digitando = mostrarDigitando();
-    setTimeout(() => {
+  mostrarDigitando();
+
+  obterResposta(texto)
+    .then(resposta => {
       removerDigitando();
-      adicionarMensagem(obterResposta(texto), 'bot');
-    }, 800 + Math.random() * 600);
-  }
+      adicionarMensagem(resposta, 'bot');
+    })
+    .catch(() => {
+      removerDigitando();
+      adicionarMensagem('Ops! Ocorreu um erro. Tente novamente ou fale pelo formulário de Contato.', 'bot');
+    });
+}
 
   function toggleChat() {
     const aberto = !widget.classList.contains('hidden');
