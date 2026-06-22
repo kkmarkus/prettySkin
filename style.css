@@ -596,68 +596,55 @@ section { padding: 5rem 0; }
 
 /* Slots individuais de cada produto */
 .card-img.p1 {
-  /*
-   * PRODUTO 1 — inserir imagem:
-   * background-image: url('produtos/produto-1.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+  
+    background-image: url('images/imagemserumfundobranco.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 .card-img.p2 {
-  /*
-   * PRODUTO 2 — inserir imagem:
-   * background-image: url('produtos/produto-2.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+  
+    background-image: url('images/imagemhidratante.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 .card-img.p3 {
-  /*
-   * PRODUTO 3 — inserir imagem:
-   * background-image: url('produtos/produto-3.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+  
+    background-image: url('images/imagemesfoliante.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 .card-img.p4 {
-  /*
-   * PRODUTO 4 — inserir imagem:
-   * background-image: url('produtos/produto-4.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+  
+    background-image: url('images/imagemtonicoaguarosa.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 .card-img.p5 {
-  /*
-   * PRODUTO 5 — inserir imagem:
-   * background-image: url('produtos/produto-5.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+    background-image: url('images/imagemprotetorfps60-Copia.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 .card-img.p6 {
-  /*
-   * PRODUTO 6 — inserir imagem:
-   * background-image: url('produtos/produto-6.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+    background-image: url('images/imagemserumrosamosqueta.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 .card-img.p7 {
-  /*
-   * PRODUTO 7 — inserir imagem:
-   * background-image: url('produtos/produto-7.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+    background-image: url('images/imagemmascaradetox.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 .card-img.p8 {
-  /*
-   * PRODUTO 8 — inserir imagem:
-   * background-image: url('produtos/produto-8.jpg');
-   * background-size: cover;
-   * background-position: center;
-   */
+    background-image: url('images/imagemcremeolhos.jpeg');
+    background-size: cover;
+    background-position: center;
+   
 }
 
 /* Informações do card */
@@ -754,18 +741,11 @@ section { padding: 5rem 0; }
   border-radius: var(--raio-lg);
   position: relative;
 
-  /*
-   * ════════════════════════════════════════════════════
-   * ESPAÇO RESERVADO PARA IMAGEM DA SEÇÃO SOBRE
-   * ════════════════════════════════════════════════════
-   * Substituir o background abaixo por:
-   *
-   *   background-image: url('imagens/sobre-marca.jpg');
-   *   background-size: cover;
-   *   background-position: center;
-   *
-   * ════════════════════════════════════════════════════
-   */
+  
+    background-image: url('imagens/imagemmulherprettyskin.jpeg');
+    background-size: cover;
+    background-position: center;
+   
   background: linear-gradient(
     160deg,
     var(--pink-claro)  0%,
