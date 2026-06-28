@@ -1,164 +1,181 @@
-# Pretty Skin 🌸
+# 🌸 Pretty Skin
 
-E-commerce de skincare brasileiro com chatbot de atendimento integrado à IA.
+> Realce o que te faz única ✨
 
----
-
-## Visão geral
-
-A **Pretty Skin** é uma loja virtual de cosméticos e skincare desenvolvida com foco em design elegante, experiência de usuário fluida e atendimento inteligente via chatbot. O projeto integra um backend Node.js com a API da NVIDIA NIM (modelo DeepSeek) para responder dúvidas dos clientes em tempo real sobre os produtos da loja.
+**Pretty Skin** é um e-commerce de skincare brasileiro com chatbot de IA integrado. Desenvolvido como projeto acadêmico da disciplina de **Desenvolvimento Web Aplicada à Inteligência Artificial** no [PIT — Piauí Instituto de Tecnologia](https://www.pit.pi.gov.br/).
 
 ---
 
-## Funcionalidades
+## 🎯 Funcionalidades
 
-- **Carrossel hero** com troca automática, controle por botões, dots e swipe touch
-- **Catálogo de produtos** com cards animados e botão de adicionar ao carrinho
-- **Carrinho lateral** com controle de quantidade, total em tempo real e badge animado
-- **Busca** por nome de produto com filtragem instantânea
-- **Formulário de contato** com validação e feedback visual
-- **Chatbot com IA** integrado via API da NVIDIA NIM (DeepSeek V4 Flash)
-- **Animações de entrada** via IntersectionObserver
-- **Design responsivo** com paleta pink/dourado e tipografia Playfair Display + Outfit
-- **Navegação inteligente** com link ativo por seção e header que oculta ao rolar
+- ✅ Catálogo de produtos com busca em tempo real
+- ✅ Carrinho de compras com painel lateral
+- ✅ Hero carousel com autoplay e controle por toque
+- ✅ Chatbot com IA (NVIDIA API + DeepSeek)
+- ✅ Formulário de contato com validação
+- ✅ Design responsivo (mobile first)
+- ✅ Animações com Intersection Observer
 
 ---
 
-## Tecnologias
+## 🏗️ Estrutura do Projeto
 
-| Camada | Tecnologia |
-|---|---|
-| Frontend | HTML5, CSS3, JavaScript (ES6+) |
-| Backend | Node.js + Express |
-| IA | NVIDIA NIM API — modelo `deepseek-ai/deepseek-v4-flash` |
-| HTTP Client (IA) | SDK OpenAI (compatível com NVIDIA NIM) |
-| Variáveis de ambiente | dotenv |
-| CORS | cors |
-
----
-
-## Estrutura do projeto
-
-```
+```text
 prettySkin/
-├── images/                      # Imagens dos produtos e banners
-│   ├── serum-vitamina-c.jpeg
-│   ├── hidratante-corporal.jpeg
-│   ├── esfoliante-facial.jpeg
-│   ├── tonico-facial.jpeg
-│   ├── protetor-solar.jpeg
-│   ├── banner-hero-1.jpeg
-│   ├── banner-hero-2.jpeg
-│   └── banner-hero-3.jpeg
-├── index.html                   # Estrutura da página
-├── style.css                    # Estilos e design system
-├── script.js                    # Lógica do frontend (carrossel, carrinho, chatbot)
-├── server.js                    # Servidor Express + integração com API de IA
+│
+├── index.html
+│
+├── assets/
+│   ├── css/
+│   │   ├── variables.css       ← tokens de design
+│   │   └── style.css           ← estilos gerais
+│   │
+│   ├── js/
+│   │   ├── main.js             ← carousel, header, carrinho, busca, formulário, animações
+│   │   └── chat.js             ← módulo do chatbot IA
+│   │
+│   └── images/                 ← imagens dos produtos e hero
+│
+├── api/
+│   └── chat.js                 ← Vercel Serverless Function (/api/chat)
+│
+├── .github/
+│   ├── code-definitions.md     ← padrões de código
+│   └── design-definitions.md   ← identidade visual
+│
+├── server.js                   ← servidor local para desenvolvimento
 ├── package.json
-├── .env                         # Variáveis de ambiente (não versionado)
-└── .gitignore
+├── .env.example
+└── README.md
 ```
 
 ---
 
-## Pré-requisitos
+## 🎨 Identidade Visual
 
-- [Node.js](https://nodejs.org/) v18 ou superior
-- Chave de API da NVIDIA NIM — obtenha gratuitamente em [build.nvidia.com](https://build.nvidia.com)
+### Paleta de Cores
+
+| Elemento          | Cor             | Hex       |
+|-------------------|-----------------|-----------|
+| Primária          | Pink Forte      | `#E44F9C` |
+| Secundária        | Pink Médio      | `#FF69B4` |
+| Acento            | Dourado         | `#FCBB14` |
+| Fundo             | Branco          | `#FFFFFF` |
+| Fundo suave       | Rosa Névoa      | `#FDF5F9` |
+| Texto principal   | Preto           | `#1C1C1C` |
+| Texto secundário  | Ameixa Muted    | `#7A5F6E` |
+
+**Gradiente principal:** `#E44F9C → #FCBB14`
+
+### Tipografia
+
+- **Títulos:** Playfair Display (elegante, literário)
+- **Corpo:** Outfit (moderno, legível)
 
 ---
 
-## Instalação e execução
+## 🛠️ Stack Tecnológico
+
+| Camada       | Tecnologia                          |
+|--------------|-------------------------------------|
+| Markup       | HTML5 semântico                     |
+| Estilos      | CSS3 (Grid, Flexbox, Custom Properties) |
+| Scripts      | JavaScript vanilla ES6+ (módulos IIFE) |
+| IA           | NVIDIA API + DeepSeek V4 Flash      |
+| Deploy       | Vercel (CDN + Serverless Functions) |
+
+---
+
+## 🤖 Arquitetura da IA
+
+O chatbot usa a **NVIDIA API** com o modelo `deepseek-ai/deepseek-v4-flash`.
+
+A separação é clara:
+
+```
+Navegador → POST /api/chat → Vercel Serverless Function → NVIDIA API
+```
+
+Em produção, `api/chat.js` é uma Serverless Function no Vercel.
+Em desenvolvimento local, `server.js` (Express) delega para a mesma função.
+
+---
+
+## 🚀 Como Rodar Localmente
+
+### Pré-requisitos
+
+- Node.js 18+
+- Chave de API da NVIDIA
+
+### Instalação
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/kkmarkus/prettySkin.git
-cd prettySkin
+git clone https://github.com/seu-usuario/pretty-skin.git
+cd pretty-skin
 
 # 2. Instale as dependências
 npm install
 
-# 3. Crie o arquivo de variáveis de ambiente
+# 3. Configure as variáveis de ambiente
 cp .env.example .env
-# Edite o .env e adicione sua chave da NVIDIA
+# Edite o .env e insira sua NVIDIA_API_KEY
 
-# 4. Inicie o servidor
-npm start
-```
-
-Acesse em: `http://localhost:3000`
-
-Para desenvolvimento com hot reload:
-
-```bash
+# 4. Rode o servidor local
 npm run dev
 ```
 
----
-
-## Variáveis de ambiente
-
-Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
-
-```env
-NVIDIA_API_KEY=nvapi-sua_chave_aqui
-PORT=3000
-```
-
-> ⚠️ **Nunca versione o arquivo `.env`.** Ele já está listado no `.gitignore`.
+Acesse em `http://localhost:3000`.
 
 ---
 
-## Produtos disponíveis
+## ☁️ Deploy no Vercel
 
-| Produto | Preço |
-|---|---|
-| Sérum Facial Vitamina C 15% + Hialurônico | R$ 89,90 |
-| Hidratante Corporal Óleo de Macadâmia e amêndoas | R$ 59,90 |
-| Esfoliante Facial Argila Rosa | R$ 49,90 |
-| Tônico Facial Água de Rosas + Niacinamida 5% | R$ 44,90 |
-| Protetor Solar FPS 60 Acabamento Matte | R$ 74,90 |
-| Creme Noturno Regenerador | R$ 79,90 |
+O Vercel detecta automaticamente a estrutura do projeto:
 
----
+- Arquivos estáticos (`index.html`, `assets/`) → servidos via **CDN**
+- Pasta `api/` → **Serverless Functions**
 
-## Chatbot
+Não é necessário nenhum `vercel.json`.
 
-O chatbot é acionado pelo botão flutuante no canto inferior direito da página. Ele é alimentado pelo modelo **DeepSeek V4 Flash** via NVIDIA NIM e responde dúvidas sobre produtos, ingredientes, preços e orientações gerais de skincare, sempre em português e com tom simpático.
+Passos:
 
-A comunicação segue o fluxo:
-
-```
-Usuário → frontend (script.js)
-       → POST /api/chat (server.js)
-       → NVIDIA NIM API (DeepSeek V4 Flash)
-       → resposta exibida no chat
-```
+1. Faça o push do projeto para o GitHub
+2. Importe o repositório no [Vercel](https://vercel.com)
+3. Em **Environment Variables**, adicione `NVIDIA_API_KEY` com sua chave
+4. Deploy ✅
 
 ---
 
-## Scripts disponíveis
+## 📋 Padrões de Desenvolvimento
 
-```bash
-npm start      # Inicia o servidor em produção
-npm run dev    # Inicia com hot reload (node --watch)
-```
+Consulte os documentos em `.github/`:
 
----
-
-## Branches
-
-| Branch | Descrição |
-|---|---|
-| `main` | Versão estável |
-| `feat/chatbot-nvidia` | Integração do chatbot com NVIDIA NIM + imagens dos produtos |
+- [`code-definitions.md`](.github/code-definitions.md) — convenções de código, nomenclatura, padrões JS/CSS
+- [`design-definitions.md`](.github/design-definitions.md) — paleta, tipografia, componentes, tokens
 
 ---
 
-## Licença
+## 📦 Produtos Disponíveis
 
-Este projeto foi desenvolvido para fins acadêmicos e de portfólio.
+| Produto                              | Categoria         | Preço     |
+|--------------------------------------|-------------------|-----------|
+| Sérum Facial Vitamina C + Hialurônico | Tratamento Facial | R$ 89,90 |
+| Hidratante Corporal de Macadâmia     | Hidratação        | R$ 59,90 |
+| Esfoliante Facial de Argila Rosa     | Limpeza           | R$ 49,90 |
+| Tônico Facial Água de Rosas          | Tonificação       | R$ 44,90 |
+| Protetor Solar FPS 60 Toque Seco     | Proteção Solar    | R$ 74,90 |
+| Óleo Facial Dourado Rosa Mosqueta    | Tratamento Noturno| R$ 99,90 |
+| Máscara Facial Detox Carvão + Aloe   | Tratamento        | R$ 54,90 |
+| Creme para Olhos Anti-Olheiras       | Contorno dos Olhos| R$ 79,90 |
 
 ---
 
-*Feito no Piauí* 🌸
+## 📝 Licença
+
+Este projeto está sob licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+**Pretty Skin** — Nascemos no Piauí para cuidar de você. 🌸
