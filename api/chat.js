@@ -1,8 +1,12 @@
 import OpenAI from 'openai';
 
+// Tempo máximo que a Serverless Function pode rodar no Vercel (em segundos)
+export const maxDuration = 30;
+
 const client = new OpenAI({
   apiKey: process.env.NVIDIA_API_KEY,
   baseURL: 'https://integrate.api.nvidia.com/v1',
+  timeout: 20000, // 20s — se a NVIDIA não responder, lança erro imediatamente
 });
 
 const SYSTEM_PROMPT = `Você é a assistente virtual da Pretty Skin, uma loja brasileira de skincare.
@@ -22,7 +26,6 @@ Não invente informações sobre produtos que não estão na lista acima.
 Se não souber responder, oriente o cliente a entrar em contato pelo formulário de contato do site.`;
 
 export default async function handler(req, res) {
-  // Só aceita POST
   if (req.method !== 'POST') {
     return res.status(405).json({ erro: 'Método não permitido.' });
   }
@@ -35,7 +38,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await client.chat.completions.create({
-      model: 'deepseek-ai/deepseek-v4-flash',
+      model: 'deepseek-ai/deepseek-r1',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: mensagem },
@@ -47,11 +50,16 @@ export default async function handler(req, res) {
     });
 
     const texto =
-      response.choices[0]?.message?.content || 'Não consegui gerar uma resposta.';
+        response.choices[0]?.message?.content || 'Não consegui gerar uma resposta.';
 
     res.status(200).json({ resposta: texto });
   } catch (err) {
-    console.error('Erro ao chamar a API da NVIDIA:', err.message);
-    res.status(500).json({ erro: 'Erro ao contactar a IA. Tente novamente.' });
+    const isTimeout = err.message?.includes('timeout') || err.code === 'ETIMEDOUT';
+    console.error('Erro na API da NVIDIA:', err.message);
+    res.status(500).json({
+      erro: isTimeout
+          ? 'A IA demorou demais para responder. Tente novamente.'
+          : 'Erro ao contactar a IA. Tente novamente.',
+    });
   }
 }
