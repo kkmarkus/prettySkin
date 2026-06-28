@@ -1,0 +1,50 @@
+:root {
+  /* Cores da paleta */
+  --preto:          #1C1C1C;
+  --pink-forte:     #E44F9C;
+  --pink-medio:     #FF69B4;
+  --pink-claro:     #FF97D9;
+  --dourado:        #FCBB14;
+  --dourado-claro:  #FFD463;
+
+  /* Cores de suporte */
+  --branco:         #FFFFFF;
+  --bg-suave:       #FDF5F9;         
+  --texto-muted:    #7A5F6E;      
+  --border:         #F0D6E8;
+  
+  /* Tipografia */
+  --fonte-titulo:   'Playfair Display', Georgia, serif;
+  --fonte-corpo:    'Outfit', sans-serif;
+
+  /* Sombras */
+  --sombra-sm:      0 2px 12px rgba(228, 79, 156, .10);
+  --sombra-md:      0 6px 28px rgba(228, 79, 156, .15);
+  --sombra-lg:      0 12px 48px rgba(228, 79, 156, .22);
+  --sombra-gold:    0 6px 24px rgba(252, 187, 20,  .28);
+
+  /* Bordas arredondadas */
+  --raio-sm:   8px;
+  --raio-md:   14px;
+  --raio-lg:   24px;
+  --raio-full: 9999px;
+
+  /* Layout */
+
+  --container:  1200px;
+  --header-h:   120px;  
+  
+  /* Transição padrão */
+  --t: .3s ease;
+
+  /* Cores de placeholder dos slides */
+  --slide-bg-1: #f5e6ee;
+  --slide-bg-2: #f0d8e7;
+  --slide-bg-3: #ebc9de;
+
+  /* Cores de texto de feedback do formulário */
+  --feedback-sucesso-texto: #7a5200;
+  --feedback-erro-texto:    #8b1a4a;
+}
+
+*,
