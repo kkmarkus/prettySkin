@@ -1,7 +1,13 @@
+/**
+ * server.js — APENAS para desenvolvimento local (npm run dev)
+ * Em produção, o Vercel serve os arquivos estáticos via CDN
+ * e api/chat.js como Serverless Function automaticamente.
+ */
+
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import { default as chatHandler } from './api/chat.js';
+import chatHandler from './api/chat.js';
 
 const app = express();
 
