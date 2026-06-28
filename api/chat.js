@@ -1,12 +1,12 @@
 import OpenAI from 'openai';
 
 // Tempo máximo que a Serverless Function pode rodar no Vercel (em segundos)
-export const maxDuration = 30;
+export const maxDuration = 60;
 
 const client = new OpenAI({
   apiKey: process.env.NVIDIA_API_KEY,
   baseURL: 'https://integrate.api.nvidia.com/v1',
-  timeout: 20000, // 20s — se a NVIDIA não responder, lança erro imediatamente
+  timeout: 50000, // 50s — tempo suficiente para o deepseek-r1 gerar a resposta
 });
 
 const SYSTEM_PROMPT = `Você é a assistente virtual da Pretty Skin, uma loja brasileira de skincare.
