@@ -10,75 +10,74 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap">
 
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/chat.js" defer></script>
 </head>
 
 <body>
-  <!-- Cabeçalho -->
-  <header>
-    <div class="header-main">
-      <!-- logo aqui -->
-      <a href="#inicio" class="logo">
-        <!--add a imagem da logo nessa linha-->
-        <div class="logo-text">
-          <span>Pretty Skin</span>
-          <span>Realce o que te faz única ✨</span>
-        </div>
-      </a>
-
-      <div class="cabecalho-busca" role="search">
-        <input type="search" placeholder="o que está buscando hoje?" id="buscaInput">
-        <button type="button">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </button>
+<!-- Cabeçalho -->
+<header>
+  <div class="header-main">
+    <a href="#inicio" class="logo">
+      <div class="logo-text">
+        <span>Pretty Skin</span>
+        <span>Realce o que te faz única ✨</span>
       </div>
+    </a>
 
-      <div class="header-icons">
-
-        <button type="button" class="header-icon-btn">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-          <span>entrar</span>
-        </button>
-
-        <div class="cart-wrapper">
-          <button type="button" class="header-icon-btn" id="btnCarrinho">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
-            <span>carrinho</span>
-          </button>
-          <div class="cart-badge" id="cartBadge" aria-live="polite">0</div>
-        </div>
-
-      </div>
+    <div class="cabecalho-busca" role="search">
+      <input type="search" placeholder="o que está buscando hoje?" id="buscaInput">
+      <button type="button">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </button>
     </div>
 
-    <nav class="header-nav" id="headerNav">
-      <ul>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#produtos">Produtos</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="header-icons">
 
-  </header>
+      <button type="button" class="header-icon-btn">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span>entrar</span>
+      </button>
 
-  <main>
-    <!-- Hero em Carrossel -->
-    <section id="inicio">
+      <div class="cart-wrapper">
+        <button type="button" class="header-icon-btn" id="btnCarrinho">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span>carrinho</span>
+        </button>
+        <div class="cart-badge" id="cartBadge" aria-live="polite">0</div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="header-nav" id="headerNav">
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+</header>
+
+<main>
+  <!-- Hero em Carrossel -->
+  <section id="inicio">
     <div class="carousel-hero">
 
       <div class="carousel-slide active" role="group">
@@ -89,7 +88,7 @@
           <a href="#produtos" class="btn-hero">Ver coleção</a>
         </div>
         <div class="slide-image slide-image-1">
-          <img src="images/imagem4cosmeticos.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
+          <img src="assets/images/imagem4cosmeticos.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
         </div>
       </div>
 
@@ -101,7 +100,7 @@
           <a href="#produtos" class="btn-hero">Conhecer o sérum</a>
         </div>
         <div class="slide-image slide-image-2">
-          <img src="images/imagemserum.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
+          <img src="assets/images/imagemserum.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
         </div>
       </div>
 
@@ -113,7 +112,7 @@
           <a href="#sobre" class="btn-hero">Nossa história</a>
         </div>
         <div class="slide-image slide-image-3">
-          <img src="images/imagem3cosmeticos.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
+          <img src="assets/images/imagem3cosmeticos.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
         </div>
       </div>
 
@@ -128,421 +127,421 @@
 
     </div>
   </section>
-    <!-- Seção dos Produtos -->
-    <section id="produtos">
-      <div class="container">
+  <!-- Seção dos Produtos -->
+  <section id="produtos">
+    <div class="container">
+      <div class="secao-cabecalho">
+        <span class="secao-etiqueta">Coleção</span>
+        <h2>Nossos Produtos</h2>
+      </div>
+
+      <div class="produtos-grid">
+
+        <article class="card-produto">
+          <div class="card-img p1">
+            <img src="assets/images/imagemserumfundobranco.jpeg" alt="Sérum Facial Vitamina C + Hialurônico Pretty Skin" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Tratamento Facial</p>
+            <h3>Sérum Facial Vitamina C + Hialurônico</h3>
+            <p class="card-descricao">Vitamina C 15% + ácido hialurônico. Uniformiza o tom, reduz manchas e devolve luminosidade em 14 dias.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 89,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p2">
+            <img src="assets/images/imagemhidratante.jpeg" alt="Hidratante Corporal de Macadâmia e Amêndoas" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Hidratação</p>
+            <h3>Hidratante Corporal de Macadâmia e Amêndoas</h3>
+            <p class="card-descricao">Óleo de macadâmia e amêndoas, com vitamina E e Ureia 10%. Hidrata por até 24h, pele macia com leve perfume floral. Para peles secas a normais.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 59,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p3">
+            <img src="assets/images/imagemesfoliante.jpeg" alt="Esfoliante Facial de Argila Rosa" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Limpeza</p>
+            <h3>Esfoliante Facial de Argila Rosa</h3>
+            <p class="card-descricao">Micropartículas naturais de argila rosa com extrato de chá verde. Remove células mortas sem agredir, prepara a pele para absorver os próximos cuidados.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 49,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p4">
+            <img src="assets/images/imagemtonicoaguarosa.jpeg" alt="Tônico Facial Água de Rosas Calmante" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Tonificação</p>
+            <h3>Tônico Facial Água de Rosas Calmante</h3>
+            <p class="card-descricao">Água de rosas destilada, com niacinamida 5% e ácido hialurônico. Reequilibra o pH, fecha os poros. Sem álcool — ideal para peles sensíveis e oleosas.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 44,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p5">
+            <img src="assets/images/imagemprotetorfps60 - Copia.jpeg" alt="Protetor Solar Facial FPS 60 Toque Seco" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Proteção Solar</p>
+            <h3>Protetor Solar Facial FPS 60 Toque Seco</h3>
+            <p class="card-descricao">Fórmula leve, acabamento matte, FPS 60. Controla o brilho, não entope os poros, compatível com maquiagem.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 74,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p6">
+            <img src="assets/images/imagemserumrosamosqueta.jpeg" alt="Óleo Facial Dourado Rosa Mosqueta" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Tratamento Noturno</p>
+            <h3>Óleo Facial Dourado Rosa Mosqueta</h3>
+            <p class="card-descricao">Óleo seco prensado a frio + óleo de camélia e alecrim. Regenera durante a noite, atenua cicatrizes. Absorção rápida.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 99,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p7">
+            <img src="assets/images/imagemmascaradetox.jpeg" alt="Máscara Facial Detox Carvão + Aloe Vera" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Tratamento</p>
+            <h3>Máscara Facial Detox Carvão + Aloe Vera</h3>
+            <p class="card-descricao">Carvão vegetal + aloe vera orgânica. Desobstrui os poros, controla oleosidade, acalma a pele. 15 min, 1-2×/semana.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 54,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-produto">
+          <div class="card-img p8">
+            <img src="assets/images/imagemcremeolhos.jpeg" alt="Creme para Olhos Anti-Olheiras Cafeína" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p class="card-categoria">Contorno dos Olhos</p>
+            <h3>Creme para Olhos Anti-Olheiras Cafeína</h3>
+            <p class="card-descricao">Cafeína 3% + peptídeos de colágeno + extrato de pepino. Reduz olheiras, bolsas e linhas finas. Gel-creme que não migra.</p>
+            <div class="card-rodape">
+              <div>
+                <div class="card-preco">R$ 79,90</div>
+              </div>
+              <button type="button" class="btn-adicionar">+ Carrinho</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Sobre -->
+  <section id="sobre">
+    <div class="sobre-grid">
+
+      <div class="sobre-imagem">
+        <img src="assets/images/imagemmulherprettyskin.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
+      </div>
+
+      <div class="sobre-texto">
         <div class="secao-cabecalho">
-          <span class="secao-etiqueta">Coleção</span>
-          <h2>Nossos Produtos</h2>
+          <span class="secao-etiqueta">Nossa história</span>
+          <h2>"Nascemos no Piauí para cuidar de você"</h2>
         </div>
 
-        <div class="produtos-grid">
+        <p>A Pretty Skin surgiu em Teresina com uma certeza: pele saudável não é privilégio. Criada por mulheres apaixonadas por cosmética e bem-estar, a marca nasceu da vontade de oferecer skincare de verdade — com ativos eficazes, ingredientes naturais e preços que cabem na realidade brasileira.</p>
+        <p>Cada fórmula é desenvolvida com rigor científico e validada por dermatologistas. Não usamos parabenos, corantes artificiais nem testamos em animais. Somos cruelty-free, veganos e comprometidos com a sustentabilidade — das embalagens recicláveis ao fornecimento responsável de matérias-primas.</p>
 
-          <article class="card-produto">
-            <div class="card-img p1">
-              <img src="images/imagemserumfundobranco.jpeg" alt="Sérum Facial Vitamina C + Hialurônico Pretty Skin" loading="lazy">
+        <div class="valores-lista">
+          <div class="valor-item">
+            <div class="valor-icone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 4 13v-1a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v1a7 7 0 0 1-7 7Z" />
+                <path d="M11 20a7 7 0 0 0 7-7v-1a3 3 0 0 0-3-3h0a3 3 0 0 0-3 3v1" />
+                <path d="M11 13c0-4 3-7 8-9-1 6-3 9-8 9Z" />
+              </svg>
             </div>
-            <div class="card-info">
-              <p class="card-categoria">Tratamento Facial</p>
-              <h3>Sérum Facial Vitamina C + Hialurônico</h3>
-              <p class="card-descricao">Vitamina C 15% + ácido hialurônico. Uniformiza o tom, reduz manchas e devolve luminosidade em 14 dias.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 89,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
+            <div class="valor-texto">
+              <strong>Natural de verdade</strong>
+              <p>Ativos botânicos selecionados, sem ingredientes controversos. Formulações limpas que respeitam a pele e o meio ambiente.</p>
             </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p2">
-              <img src="images/imagemhidratante.jpeg" alt="Hidratante Corporal de Macadâmia e Amêndoas" loading="lazy">
+          </div>
+          <div class="valor-item">
+            <div class="valor-icone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 2v6.5L4.5 17A2 2 0 0 0 6.3 20h11.4a2 2 0 0 0 1.8-3L15 8.5V2" />
+                <path d="M8.5 2h7" />
+                <path d="M7.5 14h9" />
+              </svg>
             </div>
-            <div class="card-info">
-              <p class="card-categoria">Hidratação</p>
-              <h3>Hidratante Corporal de Macadâmia e Amêndoas</h3>
-              <p class="card-descricao">Óleo de macadâmia e amêndoas, com vitamina E e Ureia 10%. Hidrata por até 24h, pele macia com leve perfume floral. Para peles secas a normais.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 59,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
+            <div class="valor-texto">
+              <strong>Ciência por trás da beleza</strong>
+              <p>Desenvolvido com dermatologistas. Cada concentração de ativo é escolhida com base em evidências clínicas, não em modismos.</p>
             </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p3">
-              <img src="images/imagemesfoliante.jpeg" alt="Esfoliante Facial de Argila Rosa" loading="lazy">
+          </div>
+          <div class="valor-item">
+            <div class="valor-icone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.58 3.2L3.2 3.2A1 1 0 0 0 2.2 4.2l.03 6.38a2 2 0 0 0 .6 1.4l9.58 9.58a2 2 0 0 0 2.83 0l5.36-5.36a2 2 0 0 0-.01-2.83Z" />
+                <circle cx="7.5" cy="7.5" r="1.4" />
+              </svg>
             </div>
-            <div class="card-info">
-              <p class="card-categoria">Limpeza</p>
-              <h3>Esfoliante Facial de Argila Rosa</h3>
-              <p class="card-descricao">Micropartículas naturais de argila rosa com extrato de chá verde. Remove células mortas sem agredir, prepara a pele para absorver os próximos cuidados.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 49,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
+            <div class="valor-texto">
+              <strong>Acessível para todas</strong>
+              <p>Qualidade premium sem preço absurdo. Acreditamos que cuidar da pele deve ser um hábito possível, não um luxo esporádico.</p>
             </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p4">
-              <img src="images/imagemtonicoaguarosa.jpeg" alt="Tônico Facial Água de Rosas Calmante" loading="lazy">
-            </div>
-            <div class="card-info">
-              <p class="card-categoria">Tonificação</p>
-              <h3>Tônico Facial Água de Rosas Calmante</h3>
-              <p class="card-descricao">Água de rosas destilada, com niacinamida 5% e ácido hialurônico. Reequilibra o pH, fecha os poros. Sem álcool — ideal para peles sensíveis e oleosas.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 44,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p5">
-              <img src="images/imagemprotetorfps60 - Copia.jpeg" alt="Protetor Solar Facial FPS 60 Toque Seco" loading="lazy">
-            </div>
-            <div class="card-info">
-              <p class="card-categoria">Proteção Solar</p>
-              <h3>Protetor Solar Facial FPS 60 Toque Seco</h3>
-              <p class="card-descricao">Fórmula leve, acabamento matte, FPS 60. Controla o brilho, não entope os poros, compatível com maquiagem.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 74,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p6">
-              <img src="images/imagemserumrosamosqueta.jpeg" alt="Óleo Facial Dourado Rosa Mosqueta" loading="lazy">
-            </div>
-            <div class="card-info">
-              <p class="card-categoria">Tratamento Noturno</p>
-              <h3>Óleo Facial Dourado Rosa Mosqueta</h3>
-              <p class="card-descricao">Óleo seco prensado a frio + óleo de camélia e alecrim. Regenera durante a noite, atenua cicatrizes. Absorção rápida.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 99,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p7">
-              <img src="images/imagemmascaradetox.jpeg" alt="Máscara Facial Detox Carvão + Aloe Vera" loading="lazy">
-            </div>
-            <div class="card-info">
-              <p class="card-categoria">Tratamento</p>
-              <h3>Máscara Facial Detox Carvão + Aloe Vera</h3>
-              <p class="card-descricao">Carvão vegetal + aloe vera orgânica. Desobstrui os poros, controla oleosidade, acalma a pele. 15 min, 1-2×/semana.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 54,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="card-produto">
-            <div class="card-img p8">
-              <img src="images/imagemcremeolhos.jpeg" alt="Creme para Olhos Anti-Olheiras Cafeína" loading="lazy">
-            </div>
-            <div class="card-info">
-              <p class="card-categoria">Contorno dos Olhos</p>
-              <h3>Creme para Olhos Anti-Olheiras Cafeína</h3>
-              <p class="card-descricao">Cafeína 3% + peptídeos de colágeno + extrato de pepino. Reduz olheiras, bolsas e linhas finas. Gel-creme que não migra.</p>
-              <div class="card-rodape">
-                <div>
-                  <div class="card-preco">R$ 79,90</div>
-                </div>
-                <button type="button" class="btn-adicionar">+ Carrinho</button>
-              </div>
-            </div>
-          </article>
+          </div>
 
         </div>
       </div>
-    </section>
 
-    <!-- Seção Sobre -->
-    <section id="sobre">
-      <div class="sobre-grid">
+    </div>
+  </section>
 
-        <div class="sobre-imagem">
-          <img src="images/imagemmulherprettyskin.jpeg" alt="Produtos de skincare Pretty Skin" loading="lazy">
-        </div>
-
-        <div class="sobre-texto">
-          <div class="secao-cabecalho">
-            <span class="secao-etiqueta">Nossa história</span>
-            <h2>"Nascemos no Piauí para cuidar de você"</h2>
-          </div>
-
-          <p>A Pretty Skin surgiu em Teresina com uma certeza: pele saudável não é privilégio. Criada por mulheres apaixonadas por cosmética e bem-estar, a marca nasceu da vontade de oferecer skincare de verdade — com ativos eficazes, ingredientes naturais e preços que cabem na realidade brasileira.</p>
-          <p>Cada fórmula é desenvolvida com rigor científico e validada por dermatologistas. Não usamos parabenos, corantes artificiais nem testamos em animais. Somos cruelty-free, veganos e comprometidos com a sustentabilidade — das embalagens recicláveis ao fornecimento responsável de matérias-primas.</p>
-
-          <div class="valores-lista">
-            <div class="valor-item">
-              <div class="valor-icone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M11 20A7 7 0 0 1 4 13v-1a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v1a7 7 0 0 1-7 7Z" />
-                  <path d="M11 20a7 7 0 0 0 7-7v-1a3 3 0 0 0-3-3h0a3 3 0 0 0-3 3v1" />
-                  <path d="M11 13c0-4 3-7 8-9-1 6-3 9-8 9Z" />
-                </svg>
-              </div>
-              <div class="valor-texto">
-                <strong>Natural de verdade</strong>
-                <p>Ativos botânicos selecionados, sem ingredientes controversos. Formulações limpas que respeitam a pele e o meio ambiente.</p>
-              </div>
-            </div>
-            <div class="valor-item">
-              <div class="valor-icone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 2v6.5L4.5 17A2 2 0 0 0 6.3 20h11.4a2 2 0 0 0 1.8-3L15 8.5V2" />
-                  <path d="M8.5 2h7" />
-                  <path d="M7.5 14h9" />
-                </svg>
-              </div>
-              <div class="valor-texto">
-                <strong>Ciência por trás da beleza</strong>
-                <p>Desenvolvido com dermatologistas. Cada concentração de ativo é escolhida com base em evidências clínicas, não em modismos.</p>
-              </div>
-            </div>
-            <div class="valor-item">
-              <div class="valor-icone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.58 3.2L3.2 3.2A1 1 0 0 0 2.2 4.2l.03 6.38a2 2 0 0 0 .6 1.4l9.58 9.58a2 2 0 0 0 2.83 0l5.36-5.36a2 2 0 0 0-.01-2.83Z" />
-                  <circle cx="7.5" cy="7.5" r="1.4" />
-                </svg>
-              </div>
-              <div class="valor-texto">
-                <strong>Acessível para todas</strong>
-                <p>Qualidade premium sem preço absurdo. Acreditamos que cuidar da pele deve ser um hábito possível, não um luxo esporádico.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+  <!-- Seção de Contato -->
+  <section id="contato">
+    <div class="container">
+      <div class="secao-cabecalho">
+        <span class="secao-etiqueta">Fale conosco</span>
+        <h2>Entre em contato</h2>
+        <p>Tem dúvidas sobre os produtos, seu pedido ou quer saber mais sobre nossa linha? Nossa equipe responde em até 1 dia útil.</p>
       </div>
-    </section>
 
-    <!-- Seção de Contato -->
-    <section id="contato">
-      <div class="container">
-        <div class="secao-cabecalho">
-          <span class="secao-etiqueta">Fale conosco</span>
-          <h2>Entre em contato</h2>
-          <p>Tem dúvidas sobre os produtos, seu pedido ou quer saber mais sobre nossa linha? Nossa equipe responde em até 1 dia útil.</p>
-        </div>
+      <div class="contato-grid">
 
-        <div class="contato-grid">
+        <div class="contato-info">
+          <h3>Adoramos ouvir você</h3>
+          <p>Seja para tirar dúvida sobre qual produto é ideal para seu tipo de pele, acompanhar um pedido ou simplesmente dar um oi — estamos aqui. Fale com a gente pelo formulário ao lado ou pelos canais abaixo.</p>
 
-          <div class="contato-info">
-            <h3>Adoramos ouvir você</h3>
-            <p>Seja para tirar dúvida sobre qual produto é ideal para seu tipo de pele, acompanhar um pedido ou simplesmente dar um oi — estamos aqui. Fale com a gente pelo formulário ao lado ou pelos canais abaixo.</p>
-
-            <div class="contato-detalhe">
+          <div class="contato-detalhe">
               <span class="contato-icone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
               </span>
-              <span>contato@prettyskin.com.br</span>
-            </div>
-            <div class="contato-detalhe">
+            <span>contato@prettyskin.com.br</span>
+          </div>
+          <div class="contato-detalhe">
               <span class="contato-icone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="5" y="2" width="14" height="20" rx="2" />
                   <path d="M12 18h.01" />
                 </svg>
               </span>
-              <span>(86) 4002-8922</span>
-            </div>
-            <div class="contato-detalhe">
+            <span>(86) 4002-8922</span>
+          </div>
+          <div class="contato-detalhe">
               <span class="contato-icone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </span>
-              <span>Teresina, Piauí — Brasil</span>
-            </div>
-            <div class="contato-detalhe">
+            <span>Teresina, Piauí — Brasil</span>
+          </div>
+          <div class="contato-detalhe">
               <span class="contato-icone">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </span>
-              <span>Seg–Sex · 8h às 18h</span>
-            </div>
+            <span>Seg–Sex · 8h às 18h</span>
           </div>
-
-          <form class="contato-form" id="contatoForm" novalidate>
-            <div class="form-group">
-              <label for="nome">Seu nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required />
-            </div>
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
-            </div>
-            <div class="form-group">
-              <label for="telefone">Telefone</label>
-              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" pattern="\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}" />
-            </div>
-            <div class="form-group">
-              <label for="assunto">Assunto</label>
-              <select id="assunto" name="assunto">
-                <option value="">Selecione um assunto</option>
-                <option value="produto">Dúvida sobre produto</option>
-                <option value="pedido">Meu pedido</option>
-                <option value="troca">Troca ou devolução</option>
-                <option value="outro">Outro assunto</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
-            </div>
-            <button type="submit" class="btn-enviar">Enviar mensagem</button>
-          </form>
-
         </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- Rodapé -->
-  <footer>
-    <div class="footer-grid">
+        <form class="contato-form" id="contatoForm" novalidate>
+          <div class="form-group">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" pattern="\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}" />
+          </div>
+          <div class="form-group">
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto">
+              <option value="">Selecione um assunto</option>
+              <option value="produto">Dúvida sobre produto</option>
+              <option value="pedido">Meu pedido</option>
+              <option value="troca">Troca ou devolução</option>
+              <option value="outro">Outro assunto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+          </div>
+          <button type="submit" class="btn-enviar">Enviar mensagem</button>
+        </form>
 
-      <div>
-        <div class="footer-logo">Pretty Skin</div>
-        <p class="footer-slogan">Realce o que te faz única ✨</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="#sobre">Sobre nós</a></li>
-          <li><a href="#sobre">Sustentabilidade</a></li>
-          <li><a href="#contato">Blog</a></li>
-          <li><a href="#contato">Trabalhe conosco</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Ajuda</h4>
-        <ul>
-          <li><a href="#contato">Contato</a></li>
-          <li><a href="#contato">Trocas e devoluções</a></li>
-          <li><a href="#contato">Rastrear pedido</a></li>
-          <li><a href="#contato">Política de privacidade</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Pretty Skin. Todos os direitos reservados.</span>
-      <span>Feito no Piauí</span>
-    </div>
-  </footer>
-
-  <!-- Painel lateral do carrinho -->
-  <aside class="carrinho-painel" id="carrinhopainel">
-    <div class="carrinho-painel-header">
-      <h2>Meu Carrinho</h2>
-      <button type="button" class="carrinho-fechar" id="carrinhoFechar" aria-label="Fechar carrinho">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-    </div>
-    <div class="carrinho-itens" id="carrinhoItens">
-      <p class="carrinho-vazio">Seu carrinho está vazio.</p>
-    </div>
-    <div class="carrinho-painel-footer">
-      <div class="carrinho-total">
-        <span>Total</span>
-        <span id="carrinhoTotal">R$ 0,00</span>
-      </div>
-      <button type="button" class="btn-finalizar">Finalizar compra</button>
-    </div>
-  </aside>
-  <div class="carrinho-overlay" id="carrinhoOverlay"></div>
-
-  <!-- Chatbot -->
-  <button type="button" class="chat-toggle" id="chat-toggle" aria-label="Abrir chat" aria-expanded="false">
-    <svg class="chat-toggle-icon icon-chat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-    </svg>
-    <svg class="chat-toggle-icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18" />
-      <line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-  </button>
-
-  <div class="chat-widget hidden" id="chat">
-
-    <div class="chat-header">
-      <div class="chat-avatar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
-      </div>
-      <div class="chat-header-info">
-        <strong>Pretty Skin IA</strong>
       </div>
     </div>
+  </section>
+</main>
 
-    <div class="chat-messages" id="chatMessages">
-      <div class="msg-bot">Olá! Sou a assistente da Pretty Skin. Como posso te ajudar hoje? 😊</div>
+<!-- Rodapé -->
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <div class="footer-logo">Pretty Skin</div>
+      <p class="footer-slogan">Realce o que te faz única ✨</p>
     </div>
 
-    <div class="chat-input">
-      <input type="text" id="chatInput" placeholder="Digite sua mensagem..." />
-      <button type="button" aria-label="Enviar mensagem">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
-             stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13"/>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-      </button>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#sobre">Sobre nós</a></li>
+        <li><a href="#sobre">Sustentabilidade</a></li>
+        <li><a href="#contato">Blog</a></li>
+        <li><a href="#contato">Trabalhe conosco</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#contato">Trocas e devoluções</a></li>
+        <li><a href="#contato">Rastrear pedido</a></li>
+        <li><a href="#contato">Política de privacidade</a></li>
+      </ul>
     </div>
 
   </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Pretty Skin. Todos os direitos reservados.</span>
+    <span>Feito no Piauí</span>
+  </div>
+</footer>
+
+<!-- Painel lateral do carrinho -->
+<aside class="carrinho-painel" id="carrinhopainel">
+  <div class="carrinho-painel-header">
+    <h2>Meu Carrinho</h2>
+    <button type="button" class="carrinho-fechar" id="carrinhoFechar" aria-label="Fechar carrinho">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+  <div class="carrinho-itens" id="carrinhoItens">
+    <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+  </div>
+  <div class="carrinho-painel-footer">
+    <div class="carrinho-total">
+      <span>Total</span>
+      <span id="carrinhoTotal">R$ 0,00</span>
+    </div>
+    <button type="button" class="btn-finalizar">Finalizar compra</button>
+  </div>
+</aside>
+<div class="carrinho-overlay" id="carrinhoOverlay"></div>
+
+<!-- Chatbot -->
+<button type="button" class="chat-toggle" id="chat-toggle" aria-label="Abrir chat" aria-expanded="false">
+  <svg class="chat-toggle-icon icon-chat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+  </svg>
+  <svg class="chat-toggle-icon icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+</button>
+
+<div class="chat-widget hidden" id="chat">
+
+  <div class="chat-header">
+    <div class="chat-avatar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    </div>
+    <div class="chat-header-info">
+      <strong>Pretty Skin IA</strong>
+    </div>
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg-bot">Olá! Sou a assistente da Pretty Skin. Como posso te ajudar hoje? 😊</div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." />
+    <button type="button" aria-label="Enviar mensagem">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
 
 </body>
 
