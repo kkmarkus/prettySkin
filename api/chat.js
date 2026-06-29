@@ -1,12 +1,8 @@
 import OpenAI from 'openai';
 
-// Tempo máximo que a Serverless Function pode rodar no Vercel (em segundos)
-export const maxDuration = 30;
-
 const client = new OpenAI({
   apiKey: process.env.NVIDIA_API_KEY,
   baseURL: 'https://integrate.api.nvidia.com/v1',
-  timeout: 20000, // 20s — se a NVIDIA não responder, lança erro imediatamente
 });
 
 const SYSTEM_PROMPT = `Você é a assistente virtual da Pretty Skin, uma loja brasileira de skincare.
@@ -38,7 +34,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await client.chat.completions.create({
-      model: 'deepseek-ai/deepseek-r1',
+      model: 'deepseek-ai/deepseek-v4-flash',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: mensagem },
@@ -54,12 +50,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ resposta: texto });
   } catch (err) {
-    const isTimeout = err.message?.includes('timeout') || err.code === 'ETIMEDOUT';
     console.error('Erro na API da NVIDIA:', err.message);
-    res.status(500).json({
-      erro: isTimeout
-          ? 'A IA demorou demais para responder. Tente novamente.'
-          : 'Erro ao contactar a IA. Tente novamente.',
-    });
+    res.status(500).json({ erro: 'Erro ao contactar a IA. Tente novamente.' });
   }
 }

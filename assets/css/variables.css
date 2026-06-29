@@ -9,10 +9,10 @@
 
   /* Cores de suporte */
   --branco:         #FFFFFF;
-  --bg-suave:       #FDF5F9;         
-  --texto-muted:    #7A5F6E;      
+  --bg-suave:       #FDF5F9;
+  --texto-muted:    #7A5F6E;
   --border:         #F0D6E8;
-  
+
   /* Tipografia */
   --fonte-titulo:   'Playfair Display', Georgia, serif;
   --fonte-corpo:    'Outfit', sans-serif;
@@ -32,8 +32,8 @@
   /* Layout */
 
   --container:  1200px;
-  --header-h:   120px;  
-  
+  --header-h:   120px;
+
   /* Transição padrão */
   --t: .3s ease;
 
@@ -46,5 +46,3 @@
   --feedback-sucesso-texto: #7a5200;
   --feedback-erro-texto:    #8b1a4a;
 }
-
-*,

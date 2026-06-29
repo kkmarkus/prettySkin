@@ -1,5 +1,6 @@
 @import "./variables.css";
 
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -24,7 +25,7 @@ img      { display: block; max-width: 100%; }
 a        { text-decoration: none; color: inherit; }
 ul       { list-style: none; }
 button   { cursor: pointer; border: none; background: none;
-           font-family: var(--fonte-corpo); }
+  font-family: var(--fonte-corpo); }
 
 .container {
   max-width: var(--container);
@@ -215,13 +216,13 @@ header {
 }
 
 .header-nav ul {
+  width: 100%;
   max-width: var(--container);
   margin-inline: auto;
   padding-inline: clamp(1rem, 4vw, 2.5rem);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   height: 48px;
 }
 
@@ -526,9 +527,9 @@ section { padding: 5rem 0; }
   transition: transform .5s ease;
 
   background: linear-gradient(
-    135deg,
-    var(--pink-claro)    0%,
-    var(--dourado-claro) 100%
+          135deg,
+          var(--pink-claro)    0%,
+          var(--dourado-claro) 100%
   );
 }
 
@@ -536,55 +537,55 @@ section { padding: 5rem 0; }
 
 /* Slots individuais de cada produto */
 .card-img.p1 {
-  
-    background-image: url('images/imagemserumfundobranco.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+
+  background-image: url('images/imagemserumfundobranco.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 .card-img.p2 {
-  
-    background-image: url('images/imagemhidratante.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+
+  background-image: url('images/imagemhidratante.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 .card-img.p3 {
-  
-    background-image: url('images/imagemesfoliante.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+
+  background-image: url('images/imagemesfoliante.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 .card-img.p4 {
-  
-    background-image: url('images/imagemtonicoaguarosa.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+
+  background-image: url('images/imagemtonicoaguarosa.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 .card-img.p5 {
-    background-image: url('images/imagemprotetorfps60-Copia.jpeg');
-    background-size: cover;
-    background-position: center;
+  background-image: url('images/imagemprotetorfps60-Copia.jpeg');
+  background-size: cover;
+  background-position: center;
 }
 .card-img.p6 {
-    background-image: url('images/imagemserumrosamosqueta.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+  background-image: url('images/imagemserumrosamosqueta.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 .card-img.p7 {
-    background-image: url('images/imagemmascaradetox.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+  background-image: url('images/imagemmascaradetox.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 .card-img.p8 {
-    background-image: url('images/imagemcremeolhos.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+  background-image: url('images/imagemcremeolhos.jpeg');
+  background-size: cover;
+  background-position: center;
+
 }
 
 /* Informações do card */
@@ -681,16 +682,16 @@ section { padding: 5rem 0; }
   border-radius: var(--raio-lg);
   position: relative;
 
-  
-    background-image: url('imagens/imagemmulherprettyskin.jpeg');
-    background-size: cover;
-    background-position: center;
-   
+
+  background-image: url('imagens/imagemmulherprettyskin.jpeg');
+  background-size: cover;
+  background-position: center;
+
   background: linear-gradient(
-    160deg,
-    var(--pink-claro)  0%,
-    var(--pink-forte)  55%,
-    var(--dourado)    100%
+          160deg,
+          var(--pink-claro)  0%,
+          var(--pink-forte)  55%,
+          var(--dourado)    100%
   );
   box-shadow: var(--sombra-lg);
 }
@@ -1556,7 +1557,7 @@ footer {
 }
 
 .form-feedback--sucesso {
-  background: rgba(252, 187, 20, .12);  
+  background: rgba(252, 187, 20, .12);
   color: var(--feedback-sucesso-texto);
   border-left: 4px solid var(--dourado);
 }
